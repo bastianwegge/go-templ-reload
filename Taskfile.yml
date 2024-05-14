@@ -1,0 +1,19 @@
+version: "3"
+
+tasks:
+  dev:
+    cmds:
+      - task: watch_go_files
+    deps:
+      - kill_server
+
+  watch_go_files:
+    - air -c .air.toml
+
+  kill_server:
+    - lsof -i :3000 -t | xargs kill
+
+  install:
+    desc: install go dependencies
+    cmds:
+      - go install github.com/cosmtrek/air@latest

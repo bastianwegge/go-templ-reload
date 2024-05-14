@@ -1,0 +1,27 @@
+package pages
+
+templ Page() {
+  <script>
+    let reloadSrc = new EventSource("/reload/events");
+    let error = null;
+    let errorCount = 0;
+    reloadSrc.onerror = (event) => {
+      error = event;
+      errorCount++;
+      if (errorCount > 10) {
+        console.log("Cancelling polling to prevent wasting system resources")
+        reloadSrc.close();
+      }
+    };
+    reloadSrc.onmessage = (event) => {
+      if (error) {
+        console.log("RELOADING ...")
+        error = null;
+        window.location.reload();
+      }
+    };
+  </script>
+	<div>
+		Helloo
+	</div>
+}

@@ -1,0 +1,44 @@
+root = "."
+testdata_dir = "testdata"
+tmp_dir = "tmp"
+
+[build]
+  args_bin = []
+  bin = "./cmd/tmp/main"
+  cmd = "templ generate && go build -o ./cmd/tmp/main ./cmd/main.go"
+  delay = 1000
+  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  exclude_file = []
+  exclude_regex = ["_test.go", ".*_templ.go"]
+  exclude_unchanged = false
+  follow_symlink = false
+  full_bin = ""
+  include_dir = ["cmd", "pkg", "examples"]
+  include_ext = ["go", "tpl", "tmpl", "html", "env", "templ"]
+  include_file = []
+  kill_delay = "5s"
+  log = "build-errors.log"
+  rerun = false
+  rerun_delay = 500
+  send_interrupt = false
+  stop_on_error = false
+  post_cmd = ["lsof -i tcp:3000 -t | xargs kill"]
+
+[color]
+  app = ""
+  build = "yellow"
+  main = "magenta"
+  runner = "green"
+  watcher = "cyan"
+
+[log]
+  # Set this to false for more verbose air logging
+  main_only = true
+  time = false
+
+[misc]
+  clean_on_exit = false
+
+[screen]
+  clear_on_rebuild = false
+  keep_scroll = true
