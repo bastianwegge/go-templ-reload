@@ -1,6 +1,8 @@
 ## templ live-reload without watch-proxy
 
-I noticed that I'd have to switch around between `templ generate --watch` a lot if I wanted to commit my work. This is a simple example on how to avoid switching back and forth, thus logging into a nice developer experience when working with templ.
+I noticed that I'd have to switch around between `templ generate --watch` and `templ generate` a lot if I wanted to commit my work, due to the way the `--watch` command generates strings to enable a live-reload. 
+
+This repository is a simple example on how to avoid switching back and forth, thus logging into a nice developer experience when working with templ.
 
 ### How to run
 
